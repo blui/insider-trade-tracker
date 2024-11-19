@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insider Trade Tracker</title>
+    <style>
+      /* Global styles for the body */
+      body {
+        font-family: "Segoe UI", sans-serif; /* Clean font style for readability */
+        margin: 0;
+        background: #f8f9fa; /* Light gray background for a modern look */
+        color: #333; /* Dark text for high contrast */
+        padding: 20px;
+      }
+
+      /* Header styles for the title and description */
+      h1 {
+        font-size: 28px; /* Slightly larger title */
+        color: #1d3557; /* Navy blue for professional styling */
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      p {
+        margin-bottom: 20px;
+        color: #555; /* Subtle gray for secondary text */
+        font-size: 16px;
+        text-align: center;
+      }
+
+      /* Container for the data table */
+      .table-container {
+        width: 100%;
+        max-width: 1000px; /* Maximum width to limit stretching */
+        background: #fff; /* White background for clarity */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card-like effect */
+        border-radius: 8px; /* Rounded corners for modern styling */
+        overflow: hidden;
+        margin: 0 auto; /* Center alignment */
+      }
+
+      /* Table styles */
+      table {
+        width: 100%;
+        border-collapse: collapse; /* Merge borders */
+        font-size: 15px; /* Standard text size */
+      }
+
+      th,
+      td {
+        padding: 12px; /* Padding for spacing */
+        text-align: left; /* Align text to the left */
+        border-bottom: 1px solid #ddd; /* Light gray borders between rows */
+      }
+
+      th {
+        background: #f1f3f5; /* Slightly darker background for header */
+        font-weight: bold;
+        color: #333; /* Dark text for high contrast */
+      }
+
+      /* Row highlighting for different trade types */
+      .highlight-red {
+        background: #ffe5e5; /* Light red for sales */
+        color: #d32f2f; /* Darker red for text */
+        font-weight: bold;
+      }
+
+      .highlight-green {
+        background: #e5f5e0; /* Light green for purchases */
+        color: #388e3c; /* Darker green for text */
+      }
+
+      .highlight-green-bold {
+        background: #e5f5e0; /* Light green for significant purchases */
+        color: #388e3c;
+        font-weight: bold;
+      }
+
+      /* Modal styling for detailed stock information */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed positioning for overlay effect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: #fff; /* White background for content */
+        padding: 20px; /* Spacing inside modal */
+        border-radius: 8px; /* Rounded corners */
+        width: 90%; /* Dynamic sizing */
+        max-width: 600px; /* Limit maximum width */
+        text-align: center; /* Center-align text inside */
+        position: relative; /* For close button positioning */
+      }
+
+      .modal-content h2 {
+        margin-bottom: 15px;
+        color: #1d3557; /* Navy blue for section titles */
+      }
+
+      /* Chart container inside modal */
+      canvas {
+        margin-top: 20px;
+        max-width: 100%; /* Responsive width for smaller screens */
+      }
+
+      /* Close button for modal */
+      .close-modal {
+        position: absolute; /* Positioned relative to modal */
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #333; /* Dark text for visibility */
+      }
+
+      /* Footer styles */
+      footer {
+        text-align: center; /* Center align footer text */
+        margin-top: 30px; /* Space above footer */
+        font-size: 14px; /* Smaller font size for footer text */
+        color: #555; /* Subtle gray for secondary text */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <h1>Insider Trade Tracker</h1>
+    <p>
+      Monitor insider trades with detailed analytics and charts. Data refreshes
+      every minute.
+    </p>
+
+    <!-- Table Container -->
+    <div class="table-container">
+      <table id="data">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Insider</th>
+            <th>Transaction Type</th>
+            <th>Change in Shares</th>
+            <th>Price</th>
+            <th>Trade Value</th>
+            <th>Transaction Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows dynamically populated by app.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal for detailed stock information -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Details</h2>
+        <div id="modal-content">
+          <!-- Dynamic content injected by app.js -->
+        </div>
+        <canvas id="financialChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>Built with ❤️ by Brian Lui.</footer>
+
+    <!-- JavaScript Files -->
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>
